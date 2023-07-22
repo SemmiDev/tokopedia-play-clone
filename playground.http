@@ -1,0 +1,98 @@
+### Register
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "john_doe",
+  "password": "secretPASSWORD123"
+}
+
+### Login
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "sammidev123",
+  "password": "Password12312345"
+}
+
+### Update
+PUT http://localhost:3000/api/users
+Authorization: e03f96d9-ff48-4137-8b7b-34a766fc62b4
+Content-Type: application/json
+
+{
+  "username": "sammidev123",
+  "password": "Password12312345"
+}
+
+### Logout
+POST http://localhost:3000/api/auth/logout
+Authorization: 520923f4-4ffd-40d9-add9-507a99fafcec
+Accept: application/json
+
+### POST video
+POST http://localhost:3000/api/videos
+Authorization: 6b9ab9d2-2419-48a5-8ac1-e4680a7dd93c
+Accept: application/json
+Content-Type: application/json
+
+{
+  "title": "video 1 dhuar dhuar hudar hudahdushd sahudhas",
+    "youtube_link": "https://www.youtube.com/watch?v=OBeHTS-dP_s&pp=ygUQc2FtbWkgYWxkaGkgeWFudA%3D%3D"
+}
+
+### GET video
+GET http://localhost:3000/api/videos/64bb24fecebfdc91b4176da8
+Accept: application/json
+Content-Type: application/json
+
+
+### GET all video
+GET http://localhost:3000/api/videos
+Accept: application/json
+Content-Type: application/json
+
+{
+    "youtube_link": "https://www.youtube.com/watch?v=wuLKvcn-c7A"
+}
+
+### create product
+POST http://localhost:3000/api/products
+Authorization: 1804c569-5df2-4e1b-8178-b121da4f6b2c
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "product 1",
+  "price": 1000,
+  "video_id": "64bb245dcebfdc91b4176da5",
+  "product_link": "https://shopee.co.id/%F0%9D%97%B6%F0%9D%97%95%F0%9D%97%BC%F0%9D%98%85%C2%AE-Macbook-Pro-M1-Pro-Chip-2021-14-inch-RAM-16GB-SSD-512GB-1TB--i.148846460.3839729412"
+}
+
+### get product by id
+GET http://localhost:3000/api/products/64bb3ce37e120653c4307d8f
+Accept: application/json
+
+### get all product
+GET http://localhost:3000/api/products
+Accept: application/json
+
+### get all product by video id
+GET http://localhost:3000/api/products/video/64bb245dcebfdc91b4176da5
+Accept: application/json
+
+### create comment
+POST http://localhost:3000/api/comments
+Authorization: dd920d0a-c821-450d-b346-5b669aa9c623
+Accept: application/json
+Content-Type: application/json
+
+{
+  "video_id": "64bb245dcebfdc91b4176da5",
+  "text": "comment 1"
+}
+
+### get list comment by video id
+GET http://localhost:3000/api/comments/video/64bb245dcebfdc91b4176da5
+Accept: application/json

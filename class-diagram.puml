@@ -1,0 +1,43 @@
+@startuml ClassDiagram
+
+class Video {
+    + _id: ObjectId
+    + user_id: ObjectId
+    + title: String
+    + youtube_link: String
+    + thumbnail: String
+    + timestamp: Date
+}
+
+class Comment {
+    + _id: ObjectId
+    + user_id: ObjectId
+    + video_id: ObjectId
+    + text: String
+    + timestamp: Date
+}
+
+class Product {
+    + _id: ObjectId
+    + video_id: ObjectId
+    + name: String
+    + price: Number
+    + product_link: String
+    + timestamp: Date
+}
+
+class User {
+    + _id: ObjectId
+    + username: String
+    + password: String
+    + token: String
+    + timestamp: Date
+}
+
+Video -- "1" User: user_id
+Video -- "0..*" Comment: video_id
+Video -- "0..*" Product: video_id
+User -- "0..*" Comment: user_id
+User -- "0..*" Product: user_id
+
+@enduml
