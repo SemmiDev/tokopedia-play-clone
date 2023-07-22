@@ -4,6 +4,8 @@
 
 ### Features
 
+- [x] Live comment using Server Sent Event (SSE)
+- [x] Search
 - [x] User module
   - [x] Register
   - [x] Login
