@@ -1,22 +1,11 @@
 import ProductService from '../service/product-service.js';
 import { ErrorResponse, SuccessResponse } from './http-response.js';
 import VideoService from '../service/video-service.js';
-import { validateProductData } from './validator.js';
-
+// import { validateProductData } from './validator.js';
 
 async function createProduct(req, res) {
     try {
         const productData = req.body;
-
-        const validation = validateProductData(productData);
-        if (!validation.valid) {
-            return ErrorResponse({
-                res,
-                statusCode: 400,
-                message: 'Validation errors.',
-                errors: validation.errors,
-            });
-        }
 
         const { video_id } = productData;
         const video = await VideoService.findVideoById(video_id);
@@ -28,6 +17,7 @@ async function createProduct(req, res) {
             });
         }
 
+        console.log(productData)
         const newProduct = await ProductService.createProduct(productData);
         return SuccessResponse({
             res,
@@ -36,7 +26,6 @@ async function createProduct(req, res) {
             payload: newProduct,
         });
     } catch (error) {
-
         return ErrorResponse({
             res,
             statusCode: 500,
@@ -145,15 +134,15 @@ async function updateProduct(req, res) {
             });
         }
 
-        const validation = validateProductData(productData);
-        if (!validation.valid) {
-            return ErrorResponse({
-                res,
-                statusCode: 400,
-                message: 'Validation errors.',
-                errors: validation.errors,
-            });
-        }
+        // const validation = validateProductData(productData);
+        // if (!validation.valid) {
+        //     return ErrorResponse({
+        //         res,
+        //         statusCode: 400,
+        //         message: 'Validation errors.',
+        //         errors: validation.errors,
+        //     });
+        // }
 
         const updatedProduct = await ProductService.updateProduct(
             id,

@@ -28,7 +28,6 @@ async function createComment(req, res) {
             payload: newComment,
         });
     } catch (error) {
-
         return ErrorResponse({
             res,
             statusCode: 500,
@@ -48,7 +47,6 @@ async function getCommentsByVideoId(req, res) {
             payload: comments,
         });
     } catch (error) {
-
         return ErrorResponse({
             res,
             statusCode: 500,
@@ -57,4 +55,50 @@ async function getCommentsByVideoId(req, res) {
     }
 }
 
-export { createComment, getCommentsByVideoId };
+// SSE route to send live comments
+async function liveComment(req, res) {
+    const { id } = req.params;
+    console.log('Client connected to live comments:', id);
+
+    // Set response headers for SSE
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Connection', 'keep-alive');
+
+    let lastCommentTimestamp = 0;
+
+    // Function to send live comments to the client
+    const sendLiveComments = async () => {
+        try {
+            // Get comments created after the last comment timestamp
+            const comments = await CommentService.findCommentByVideoIdAfterTimestamp(
+                id,
+                lastCommentTimestamp
+            );
+
+            // Update the last comment timestamp
+            if (comments.length > 0) {
+                lastCommentTimestamp = comments[comments.length - 1].timestamp;
+            }
+
+            console.log('Sending live comments:', comments);
+            res.write(`data: ${JSON.stringify(comments)}\n\n`);
+        } catch (error) {
+            console.error('Error occurred while sending live comments:', error);
+        }
+    };
+
+    // Immediately send the initial comments to the client
+    await sendLiveComments();
+
+    // Periodically send comments to the client (adjust the interval as needed)
+    const interval = setInterval(sendLiveComments, 2000);
+
+    // Clean up when the client disconnects
+    res.on('close', () => {
+        clearInterval(interval);
+    });
+}
+
+
+export { createComment, getCommentsByVideoId, liveComment };

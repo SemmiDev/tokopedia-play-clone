@@ -27,6 +27,7 @@ async function createVideo(req, res) {
             videoData.youtube_link
         );
 
+        videoData.youtube_id = youtubeVideoId
         videoData.thumbnail = `https://img.youtube.com/vi/${youtubeVideoId}/maxresdefault.jpg`;
 
         const newVideo = await VideoService.createVideo(videoData);
@@ -78,9 +79,9 @@ async function getVideoById(req, res) {
             });
         }
 
-        video.youtube_id = await VideoService.extractYouTubeVideoId(
-            video.youtube_link
-        );
+        video.views = video.views + 1;
+
+        await VideoService.updateVideo(id, { views: video.views });
 
         return SuccessResponse({
             res,
@@ -136,6 +137,7 @@ async function updateVideo(req, res) {
             videoData.youtube_link
         );
 
+        videoData.youtube_id = youtubeVideoId
         videoData.thumbnail = `https://img.youtube.com/vi/${youtubeVideoId}/maxresdefault.jpg`;
 
         const updatedVideo = await VideoService.updateVideo(id, videoData);

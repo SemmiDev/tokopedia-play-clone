@@ -3,8 +3,8 @@ POST http://localhost:3000/api/auth/register
 Content-Type: application/json
 
 {
-  "username": "sammidev2",
-  "password": "secretPASSWORD123"
+  "username": "sammidev",
+  "password": "Sammidev123"
 }
 
 ### Login
@@ -12,8 +12,8 @@ POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {
-  "username": "sammidev2",
-  "password": "secretPASSWORD123"
+  "username": "sammidev",
+  "password": "Sammidev123"
 }
 
 ### Update
@@ -33,7 +33,7 @@ Accept: application/json
 
 ### POST video
 POST http://localhost:3000/api/videos
-Authorization: 9ab71fa2-e60e-4d64-a78a-a3e27b2cab3d
+Authorization: 72373da5-0823-4fb4-a13c-e7a702489aff
 Accept: application/json
 Content-Type: application/json
 
@@ -43,7 +43,7 @@ Content-Type: application/json
 }
 
 ### GET video
-GET http://localhost:3000/api/videos/64bb24fecebfdc91b4176da8
+GET http://localhost:3000/api/videos/64bbb2368d79b91f6e22434c
 Accept: application/json
 Content-Type: application/json
 
@@ -59,14 +59,14 @@ Content-Type: application/json
 
 ### create product
 POST http://localhost:3000/api/products
-Authorization: 1804c569-5df2-4e1b-8178-b121da4f6b2c
+Authorization: 72373da5-0823-4fb4-a13c-e7a702489aff
 Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "product 1",
+  "name": "product 2",
   "price": 1000,
-  "video_id": "64bb245dcebfdc91b4176da5",
+  "video_id": "64bbe20ba549f99ae1e2f7c7",
   "product_link": "https://shopee.co.id/%F0%9D%97%B6%F0%9D%97%95%F0%9D%97%BC%F0%9D%98%85%C2%AE-Macbook-Pro-M1-Pro-Chip-2021-14-inch-RAM-16GB-SSD-512GB-1TB--i.148846460.3839729412"
 }
 
@@ -84,17 +84,17 @@ Accept: application/json
 
 ### create comment
 POST http://localhost:3000/api/comments
-Authorization: dd920d0a-c821-450d-b346-5b669aa9c623
+Authorization: 72373da5-0823-4fb4-a13c-e7a702489aff
 Accept: application/json
 Content-Type: application/json
 
 {
-  "video_id": "64bb245dcebfdc91b4176da5",
-  "text": "comment 1"
+  "video_id": "64bbe1d2a549f99ae1e2f7bb",
+  "text": "llal"
 }
 
 ### get list comment by video id
-GET http://localhost:3000/api/comments/video/64bb245dcebfdc91b4176da5
+GET http://localhost:3000/api/comments/video/64bbc86303dd5bc7f7d9ad2f
 Accept: application/json
 
 ### DELETE VIDEO

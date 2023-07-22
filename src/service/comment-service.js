@@ -9,6 +9,10 @@ const CommentService = {
         return CommentRepository.findById(commentId);
     },
 
+    async findCommentByVideoIdAfterTimestamp(videoId, timestamp) {
+        return CommentRepository.findByVideoIdAfterTimestamp(videoId, timestamp);
+    },
+
     async findCommentByVideoId(videoId) {
         return CommentRepository.findByVideoId(videoId);
     },

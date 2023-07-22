@@ -42,7 +42,6 @@ async function register(req, res) {
             payload: { username },
         });
     } catch (error) {
-
         return ErrorResponse({
             res,
             statusCode: 500,
@@ -101,10 +100,9 @@ async function login(req, res) {
             res,
             statusCode: 200,
             message: 'Login successful.',
-            payload: { token, username },
+            payload: { token, username, user_id: user._id },
         });
     } catch (error) {
-
         return ErrorResponse({
             res,
             statusCode: 500,
@@ -170,7 +168,6 @@ async function updateUser(req, res) {
             payload: { username: updatedUser.username },
         });
     } catch (error) {
-
         return ErrorResponse({
             res,
             statusCode: 500,
@@ -188,7 +185,6 @@ async function logout(req, res) {
             message: 'Logout successful.',
         });
     } catch (error) {
-
         return ErrorResponse({
             res,
             statusCode: 500,
