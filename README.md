@@ -5,9 +5,26 @@
 ### Features
 
 - [x] User module
+  - [x] Register
+  - [x] Login
+  - [x] Logout
+  - [x] Update user profile
 - [x] Video module
+  - [x] Create video
+  - [x] Update video
+  - [x] Delete video
+  - [x] Get all videos
+  - [x] Get video by id
 - [x] Comment module
+  - [x] Create comment
 - [x] Product module
+  - [x] Create product
+  - [x] Update product
+  - [x] Delete product
+  - [x] Get all products
+  - [x] Get product by id
+  - [x] Get all products by video id
+
 
 ### How to install & run the app
 
@@ -19,8 +36,6 @@
    this [link](https://docs.docker.com/get-docker/)
 3. Make sure you have installed VSCode in your computer, if not please install it first in
    this [link](https://code.visualstudio.com/download)
-4. Make sure you have installed REST Client extension in your VSCode, if not please install it first in
-   this [link](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 
 #### Steps
 - Clone this repository
@@ -53,8 +68,9 @@ npm run server
 ```
 
 ### For test the API
+You can open [http://localhost:3000/api-docs](http://localhost:3000/api-docs/) to view it in the browser.
 
-Make sure you have installed REST Client extension in your VSCode, and navigate to [playground.http](playground.http) file in your VSCode and click `Send Request` button in each request.
+![open-api](./open-api.png)
 
 ### Database Schema
 
@@ -71,3 +87,4 @@ Make sure you have installed REST Client extension in your VSCode, and navigate 
 - **Morgan** (HTTP request logger middleware for node.js)
 - **UUID** (Simple, fast generation of RFC4122 UUIDS)
 - **Winston** (A logger for just about everything)
+- **Validator** (A library of string validators and sanitizers)
