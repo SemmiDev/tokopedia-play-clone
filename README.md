@@ -25,6 +25,20 @@
   - [x] Get product by id
   - [x] Get all products by video id
 
+### Additional Features
+- [x] Open API documentation using Swagger
+- [x] Token based authentication using uuid (not commonly used, but sufficient for this simple case study)
+  - [ ] Future improvement: use JWT/Paseto instead of uuid
+- [x] Logging using Winston
+- [x] Authentication middleware
+- [x] Simple Authorization middleware
+
+### To Do List
+- [ ] Unit testing
+- [ ] Integration testing
+- [ ] Dockerize the frontend
+- [ ] Dockerize the backend
+- [ ] Deployment & CICD
 
 ### How to install & run the app
 
