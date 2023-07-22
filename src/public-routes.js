@@ -1,22 +1,21 @@
 import express from "express";
-
-import userController from "./controller/user-controller.js";
-import videoController from "./controller/video-controller.js";
-import productController from "./controller/product-controller.js";
-import commentController from "./controller/comment-controller.js";
+import {login, register} from "./controller/user-controller.js";
+import {getAllVideos, getVideoById} from "./controller/video-controller.js";
+import {getAllProducts, getProductbyId, getProductsByVideoId} from "./controller/product-controller.js";
+import {getCommentsByVideoId} from "./controller/comment-controller.js";
 
 const publicRouter = new express.Router();
 
-publicRouter.post("/api/auth/register", userController.register)
-publicRouter.post("/api/auth/login", userController.login)
+publicRouter.post("/api/auth/register", register)
+publicRouter.post("/api/auth/login", login)
 
-publicRouter.get("/api/videos", videoController.getAllVideos)
-publicRouter.get("/api/videos/:id", videoController.getVideoById)
+publicRouter.get("/api/videos", getAllVideos)
+publicRouter.get("/api/videos/:id", getVideoById)
 
-publicRouter.get("/api/products", productController.getAllProducts)
-publicRouter.get("/api/products/:id", productController.getProductbyId)
-publicRouter.get("/api/products/video/:id", productController.getProductsByVideoId)
+publicRouter.get("/api/products", getAllProducts)
+publicRouter.get("/api/products/:id", getProductbyId)
+publicRouter.get("/api/products/video/:id", getProductsByVideoId)
 
-publicRouter.get("/api/comments/video/:id", commentController.getCommentsByVideoId)
+publicRouter.get("/api/comments/video/:id", getCommentsByVideoId)
 
 export default publicRouter;

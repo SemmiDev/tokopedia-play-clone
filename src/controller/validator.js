@@ -1,35 +1,78 @@
-const validator = {
-    validateUsername(username) {
-        if (!username) {
-            return {
-                valid: false,
-                message: 'Username is required.'
-            }
-        }
+import validator from 'validator';
 
-        // 3 to 16 characters, letters, numbers, underscores and hyphens
-        const usernameRegex = /^[a-zA-Z0-9_-]{3,16}$/;
+const validateUsername = (username) => {
+    if (!username) {
         return {
-            valid: usernameRegex.test(username),
-            message: 'Username must be 3 to 16 characters long and can only contain letters, numbers, underscores and hyphens.'
+            valid: false,
+            errors: 'Username is required.'
         }
-    },
+    }
 
-    validatePassword(password) {
-        if (!password) {
-            return {
-                valid: false,
-                message: 'Password is required.'
-            }
-        }
-
-        // minimum 8 characters, at least one uppercase letter, one lowercase letter and one number
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-        return {
-            valid: passwordRegex.test(password),
-            message: 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter and one number.'
-        }
+    // 3 to 16 characters, letters, numbers, underscores and hyphens
+    const usernameRegex = /^[a-zA-Z0-9_-]{3,16}$/;
+    return {
+        valid: usernameRegex.test(username),
+        errors: 'Username must be 3 to 16 characters long and can only contain letters, numbers, underscores and hyphens.'
     }
 }
 
-export default validator;
+const validatePassword = (password) => {
+    if (!password) {
+        return {
+            valid: false,
+            errors: 'Password is required.'
+        }
+    }
+
+    // minimum 8 characters, at least one uppercase letter, one lowercase letter and one number
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    return {
+        valid: passwordRegex.test(password),
+        errors: 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter and one number.'
+    }
+}
+
+const validateCommentText = (text) => {
+    if (!text) {
+        return {
+            valid: false,
+            errors: 'Text is required.'
+        }
+    }
+
+    if (!validator.isLength(text, {min: 1, max: 250})) {
+        return {
+            valid: false,
+            errors: 'Text must be between 1 and 250 characters.'
+        }
+    }
+
+    return {valid: true};
+}
+
+const validateProductData = (data) => {
+    const {video_id, name, price, product_link} = data;
+    const errors = {};
+
+    if (!video_id || !validator.isMongoId(video_id)) {
+        errors.video_id = 'Invalid video_id.';
+    }
+
+    if (!name || !validator.isLength(name, {min: 1, max: 100})) {
+        errors.name = 'Name is required and must be between 1 and 100 characters.';
+    }
+
+    if (!price || !validator.isFloat(price, {min: 0})) {
+        errors.price = 'Invalid price.';
+    }
+
+    if (!product_link || !validator.isURL(product_link)) {
+        errors.product_link = 'Invalid product_link.';
+    }
+
+    return {valid: Object.keys(errors).length === 0, errors};
+}
+
+
+export {validateUsername, validatePassword, validateCommentText, validateProductData};
+
