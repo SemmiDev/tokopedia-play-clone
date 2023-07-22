@@ -6,12 +6,18 @@ import publicRouter from "./public-routes.js";
 import mongoose from "mongoose";
 import cors from 'cors';
 
+import swaggerUi from 'swagger-ui-express';
+import YAML from 'yamljs';
+
 dotenv.config();
 const PORT = process.env.PORT || 3000;
 
 mongoose.connect(process.env.MONGO_URI ?? 'mongodb://localhost:27017/toped-play-clone', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const app = express();
+
+const apiSpec = YAML.load('./open-api.yml');
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiSpec));
 
 app.use(express.json());
 app.use(morgan('dev'));
