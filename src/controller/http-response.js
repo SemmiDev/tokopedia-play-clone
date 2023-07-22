@@ -7,14 +7,13 @@ export const SuccessResponse = (
     }) => {
 
     res.status(statusCode).json({
-
         message,
         "status_code": statusCode,
         "data": payload,
     })
 }
 
-export const ErrorResponse = ({res, statusCode = 500, message = 'Something went wrong'}) => {
+export const ErrorResponse = ({res, statusCode, message}) => {
     res.status(statusCode).json({
         message,
         "status_code": statusCode,

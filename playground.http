@@ -3,7 +3,7 @@ POST http://localhost:3000/api/auth/register
 Content-Type: application/json
 
 {
-  "username": "john_doe",
+  "username": "sammidev2",
   "password": "secretPASSWORD123"
 }
 
@@ -12,8 +12,8 @@ POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {
-  "username": "sammidev123",
-  "password": "Password12312345"
+  "username": "sammidev2",
+  "password": "secretPASSWORD123"
 }
 
 ### Update
@@ -33,13 +33,13 @@ Accept: application/json
 
 ### POST video
 POST http://localhost:3000/api/videos
-Authorization: 6b9ab9d2-2419-48a5-8ac1-e4680a7dd93c
+Authorization: 9ab71fa2-e60e-4d64-a78a-a3e27b2cab3d
 Accept: application/json
 Content-Type: application/json
 
 {
   "title": "video 1 dhuar dhuar hudar hudahdushd sahudhas",
-    "youtube_link": "https://www.youtube.com/watch?v=OBeHTS-dP_s&pp=ygUQc2FtbWkgYWxkaGkgeWFudA%3D%3D"
+  "youtube_link": "https://www.youtube.com/watch?v=OBeHTS-dP_s&pp=ygUQc2FtbWkgYWxkaGkgeWFudA%3D%3D"
 }
 
 ### GET video
@@ -95,4 +95,9 @@ Content-Type: application/json
 
 ### get list comment by video id
 GET http://localhost:3000/api/comments/video/64bb245dcebfdc91b4176da5
+Accept: application/json
+
+### DELETE VIDEO
+DELETE http://localhost:3000/api/videos/64bbac13bf3f459efa4a1965
+Authorization: 4dcc009f-a877-455c-a589-1e55abeb7f33
 Accept: application/json

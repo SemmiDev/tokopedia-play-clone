@@ -5,6 +5,8 @@ import protectedRouter from "./protected-routes.js";
 import publicRouter from "./public-routes.js";
 import mongoose from "mongoose";
 import cors from 'cors';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 
 import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs';
@@ -26,10 +28,19 @@ app.use(cors())
 app.use(publicRouter);
 app.use(protectedRouter);
 
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).json({message: 'Something went wrong.'});
-});
+const argv = yargs(hideBin(process.argv))
+  .option('reset', {
+    alias: 'r',
+    type: 'boolean',
+    description: 'Reset collections by removing all data',
+  })
+  .argv;
+
+if (argv.reset) {
+    console.log('Resetting collections...');
+    await mongoose.connection.dropDatabase();
+    console.log('Collections resetted.');
+}
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

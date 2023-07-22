@@ -25,5 +25,4 @@ const CommentService = {
         return CommentRepository.delete(commentId);
     },
 };
-
 export default CommentService;

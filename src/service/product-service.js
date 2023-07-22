@@ -1,5 +1,4 @@
 import ProductRepository from '../repository/product-repository.js';
-import VideoRepository from "../repository/video-repository.js";
 
 const ProductService = {
     async createProduct(productData) {

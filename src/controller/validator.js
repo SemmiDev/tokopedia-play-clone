@@ -73,6 +73,22 @@ const validateProductData = (data) => {
     return {valid: Object.keys(errors).length === 0, errors};
 }
 
+const validateVideoTitle = (title) => {
+    if (!title) {
+        return {
+            valid: false,
+            errors: 'Title is required.'
+        }
+    }
 
-export {validateUsername, validatePassword, validateCommentText, validateProductData};
+    if (!validator.isLength(title, {min: 1, max: 50})) {
+        return {
+            valid: false,
+            errors: 'Title must be between 1 and 50 characters.'
+        }
+    }
 
+    return {valid: true};
+}
+
+export {validateUsername, validatePassword, validateCommentText, validateProductData, validateVideoTitle};
