@@ -1,6 +1,6 @@
 ## Tokopedia Play Clone
 
-Tokopedia Play Clone is a Client-Server application that is built using NodeJS, ExpressJS, and MongoDB for the backend and ReactJS for the frontend. This application is a clone of Tokopedia Play in simplify version.
+**Tokopedia Play Clone** is a web application that is built using NodeJS, ExpressJS, and MongoDB for the backend and ReactJS for the frontend. This application is a clone of [Tokopedia Play](https://www.tokopedia.com/play/channels) in simplify version.
 
 ### Features
 
@@ -51,6 +51,10 @@ docker-compose up -d
 ```bash
 npm run server
 ```
+
+### For test the API
+
+Make sure you have installed REST Client extension in your VSCode, and navigate to [playground.http](playground.http) file in your VSCode and click `Send Request` button in each request.
 
 ### Database Schema
 
