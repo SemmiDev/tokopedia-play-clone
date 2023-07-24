@@ -85,7 +85,7 @@ docker-compose up -d
 npm run server
 ```
 
-### For test the API
+### API Contract
 You can open [http://localhost:3000/api-docs](http://localhost:3000/api-docs/) to view it in the browser.
 
 ![open-api](./open-api.png)

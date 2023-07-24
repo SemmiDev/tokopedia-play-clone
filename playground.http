@@ -12,13 +12,13 @@ POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {
-  "username": "sammidev",
-  "password": "Sammidev123"
+  "username": "sammidev123",
+  "password": "Password12312345"
 }
 
 ### Update
 PUT http://localhost:3000/api/users
-Authorization: e03f96d9-ff48-4137-8b7b-34a766fc62b4
+Authorization: 7a1a3cb0-5dd5-4023-b967-04b544a628fd
 Content-Type: application/json
 
 {
@@ -28,12 +28,12 @@ Content-Type: application/json
 
 ### Logout
 POST http://localhost:3000/api/auth/logout
-Authorization: 520923f4-4ffd-40d9-add9-507a99fafcec
+Authorization: 7f44c647-0f5b-40b6-af05-87ee28cb5a94
 Accept: application/json
 
 ### POST video
 POST http://localhost:3000/api/videos
-Authorization: 72373da5-0823-4fb4-a13c-e7a702489aff
+Authorization: 5d8254d0-fbb8-4526-b73d-e61964ad9103
 Accept: application/json
 Content-Type: application/json
 
