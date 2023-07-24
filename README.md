@@ -4,8 +4,7 @@
 
 ### Features
 
-- [x] Live comment using Server Sent Event (SSE)
-- [x] Search
+- [ ] Search
 - [x] User module
   - [x] Register
   - [x] Login
@@ -19,6 +18,9 @@
   - [x] Get video by id
 - [x] Comment module
   - [x] Create comment
+  - [x] Get comment
+  - [x] Get all comment
+  - [x] Live comment using SSE
 - [x] Product module
   - [x] Create product
   - [x] Update product
@@ -104,3 +106,4 @@ You can open [http://localhost:3000/api-docs](http://localhost:3000/api-docs/) t
 - **UUID** (Simple, fast generation of RFC4122 UUIDS)
 - **Winston** (A logger for just about everything)
 - **Validator** (A library of string validators and sanitizers)
+- **Wwagger-UI-Expresse** (Swagger UI Express)

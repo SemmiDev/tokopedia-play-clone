@@ -9,6 +9,7 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs';
+import seedData from "./model/seeder.js";
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
@@ -40,6 +41,9 @@ if (argv.reset) {
     await mongoose.connection.dropDatabase();
     console.log('Collections resetted.');
 }
+
+// run db seeder
+await seedData();
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
